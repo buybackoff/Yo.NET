@@ -1,25 +1,13 @@
 {
-  "name": "TodoMVC",
-  "version": "0.0.0",
-  "authors": [
-    "Buybackoff <vbaybekov@gmail.com>"
-  ],
-  "main": "index.html",
-  "moduleType": [
-    "globals"
-  ],
-  "keywords": [
-    "typescript",
-    "react"
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/buybackoff/TypeScriptSandbox",
+  "name": "todomvc",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "modernizr": "~2.6.2",
+    "jquery": "~1.11.0",
+    "react": "~0.10.0",
+    "es6-promise": "~1.0.0",
+    "todomvc-common": "~0.1.9"
+  },
+  "devDependencies": {}
 }

@@ -3,7 +3,8 @@ node_modules/
 bower_components/
 typings/
 *.log
-
+*.tmp
+*.sass-cache
 build/
 dist/
 # ===== End Yeoman.gitignore =====
