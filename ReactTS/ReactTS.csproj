@@ -461,11 +461,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="FrontEnd\typings\es6-promises\es6-promises.d.ts" />
-    <TypeScriptCompile Include="FrontEnd\typings\tsd.d.ts" />
+    <Folder Include="FrontEnd\app\images\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FrontEnd\app\images\" />
+    <TypeScriptCompile Include="FrontEnd\typings\es6-promises\es6-promises.d.ts" />
+    <TypeScriptCompile Include="FrontEnd\typings\tsd.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
