@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TodoMVC", "http://localhost:24617", "{1432EC78-A232-4C48-A518-446CD125E1CF}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_24617"
+		Debug.AspNetCompiler.PhysicalPath = "TodoMVC\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_24617\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_24617"
+		Release.AspNetCompiler.PhysicalPath = "TodoMVC\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_24617\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "TodoMVC\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AngularTS", "http://localhost:24665", "{190C9704-4CD1-4890-AE44-5BFBF998DEDB}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_24665"
+		Debug.AspNetCompiler.PhysicalPath = "AngularTS\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_24665\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_24665"
+		Release.AspNetCompiler.PhysicalPath = "AngularTS\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_24665\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "AngularTS\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1432EC78-A232-4C48-A518-446CD125E1CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1432EC78-A232-4C48-A518-446CD125E1CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{190C9704-4CD1-4890-AE44-5BFBF998DEDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{190C9704-4CD1-4890-AE44-5BFBF998DEDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
