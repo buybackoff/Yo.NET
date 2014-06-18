@@ -42,16 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\SampleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceModels\Todos.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
+    <TypeScriptCompile Include="Models\SampleModel.cs.d.ts">
+      <DependentUpon>SampleModel.cs</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ServiceModels\Todos.cs.d.ts">
       <DependentUpon>Todos.cs</DependentUpon>
     </TypeScriptCompile>

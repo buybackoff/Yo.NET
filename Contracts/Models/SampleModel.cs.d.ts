@@ -1,6 +1,7 @@
 ﻿declare module server {
-	interface TestModel {
+	interface SampleModel {
 		id: number;
 		value: string;
+		dateTime: Date;
 	}
 }

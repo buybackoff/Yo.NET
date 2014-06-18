@@ -2,7 +2,7 @@
 using ServiceStack;
 
 namespace Services {
-    public class TodosService : Service {
+    public class TodoService : Service {
         public TodoRepository Repository { get; set; }  //Injected by IOC
 
         public object Get(Todos request) {
