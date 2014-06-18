@@ -13,7 +13,7 @@
     "react"
   ],
   "license": "MIT",
-  "homepage": "homepage.com",
+  "homepage": "https://github.com/buybackoff/TypeScriptSandbox",
   "private": true,
   "ignore": [
     "**/.*",
