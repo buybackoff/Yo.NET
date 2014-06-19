@@ -1,7 +1,7 @@
 ﻿using Contracts.ServiceModels;
 using ServiceStack;
 
-namespace Services {
+namespace ServiceImplementations {
     public class TodoService : Service {
         public TodoRepository Repository { get; set; }  //Injected by IOC
 

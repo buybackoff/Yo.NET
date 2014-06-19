@@ -1,11 +1,14 @@
 using ServiceStack;
 
-namespace ReactTS.BackEnd
+namespace Contracts.ServiceModels
 {
+    // TODO routes Auto Route Generation Strategies Routes.AddFromAssembly() 
+
     //Request DTO
     public class Hello
     {
         public string Name { get; set; }
+        public string Surname { get; set; }
     }
 
     //Response DTO
@@ -16,14 +19,5 @@ namespace ReactTS.BackEnd
     }
 
     //Can be called via any endpoint or format, see: http://mono.servicestack.net/ServiceStack.Hello/
-    public class HelloService : Service
-    {
-        public object Any(Hello request)
-        {
-            return new HelloResponse { Result = "Hello, " + request.Name };
-        }
-    }
-
-
 }
 

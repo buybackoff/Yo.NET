@@ -4,7 +4,8 @@
   "dependencies": {
     "react-typescript-definitions": "0.0.2",
     "gulp-tap": "~0.1.1",
-    "tsd": "~0.5.7"
+    "tsd": "~0.5.7",
+    "es6-promise": "~1.0.0"
   },
   "devDependencies": {
     "connect": "^2.14.4",

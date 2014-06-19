@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Contracts.ServiceModels;
 
-namespace Services {
+namespace ServiceImplementations {
     public class TodoRepository {
         readonly List<Todo> _todos = new List<Todo>();
 
