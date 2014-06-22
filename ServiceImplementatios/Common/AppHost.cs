@@ -38,11 +38,12 @@ namespace ServiceImplementations.Common {
             var shardConnections = appSettings.GetString("ShardsConnectionStrings");
 
             try { // TODO regex multiline
-                // "0 => Server=localhost;Database=fredis.0;Uid=test;Pwd=test;";
+                // "0 == Server=localhost;Database=fredis.0;Uid=test;Pwd=test; ||";
+                // "id == conStr || id2 == connStr2" etc, TODO this is just temp solution?
                 var shards = shardConnections
-                    .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+                    .Split(new[] { "||" }, StringSplitOptions.RemoveEmptyEntries)
                     .ToDictionary(line => {
-                        var pair = line.Split(new[] { "=>" }, StringSplitOptions.RemoveEmptyEntries);
+                        var pair = line.Split(new[] { "==" }, StringSplitOptions.RemoveEmptyEntries);
                         return new KeyValuePair<ushort, string>(ushort.Parse(pair[0].Trim()), pair[1].Trim());
                     });
 
