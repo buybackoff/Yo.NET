@@ -15,6 +15,7 @@ namespace ServiceImplementations.Common {
             : base("ServiceStack minimal template", typeof(YoService).Assembly) { }
 
         public override void Configure(Funq.Container container) {
+
             //Set JSON web services to return idiomatic JSON camelCase properties
             ServiceStack.Text.JsConfig.EmitCamelCaseNames = true;
 
@@ -37,6 +38,7 @@ namespace ServiceImplementations.Common {
             var mainConnection = appSettings.GetString("MainConnectionString");
             var shardConnections = appSettings.GetString("ShardsConnectionStrings");
 
+
             try { // TODO regex multiline
                 // "0 == Server=localhost;Database=fredis.0;Uid=test;Pwd=test; ||";
                 // "id == conStr || id2 == connStr2" etc, TODO this is just temp solution?
@@ -57,7 +59,6 @@ namespace ServiceImplementations.Common {
                 throw new InvalidOperationException("conenction strings");
             }
 
-
             // TODO Blob persistor + Redis
             // TODO Cache - look up new SS's impls or implement 
             // TODO on top of .NET's built+Redis (two layers)
@@ -69,7 +70,6 @@ namespace ServiceImplementations.Common {
                 Serializer = container.Resolve<ISerializer>()
             };
             container.Register(redis);
-
             Plugins.Add(new AuthFeature(() => new UserSession(),
                 new IAuthProvider[] {
                     new CredentialsAuthProvider(appSettings)
@@ -89,7 +89,6 @@ namespace ServiceImplementations.Common {
 
             //Register all your dependencies
             container.Register(new TodoRepository());
-
         }
 
         public static void Start() {
