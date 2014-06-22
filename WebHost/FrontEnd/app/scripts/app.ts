@@ -34,8 +34,8 @@ angular.module("yoApp", ['ngSanitize'])
 
         $scope.click = () => {
             yoHubProxy.server.yo($scope.state.name, $scope.state.messageText)
-                .done(res => { })
-                .fail(() => alert('fail ' + $scope.state.messageText));
+                .done(res => { console.log('Done: ' + res); })
+                .fail(() => console.log('Fail: ' + $scope.state.messageText));
             $scope.state.messageText = "";
         }
 

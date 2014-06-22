@@ -32,8 +32,9 @@ angular.module("yoApp", ['ngSanitize']).factory('yoDataSrvc', [
 
         $scope.click = function () {
             yoHubProxy.server.yo($scope.state.name, $scope.state.messageText).done(function (res) {
+                console.log('Done: ' + res);
             }).fail(function () {
-                return alert('fail ' + $scope.state.messageText);
+                return console.log('Fail: ' + $scope.state.messageText);
             });
             $scope.state.messageText = "";
         };

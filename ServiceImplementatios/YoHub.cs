@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Contracts.ServiceModels;
 using ServiceImplementations.Common;
@@ -14,9 +16,15 @@ namespace ServiceImplementations {
 
     public class YoHub : HubBase<IEchoHubClient> {
         public async Task<string> Yo(string name, string message) {
-            var srv = HostContext.ResolveService<YoService>(HttpContextBase);
-            await srv.Any(new Yo {Name = name, Message = message});
-            return "Yo";
+            
+            try {
+                var srv = HostContext.ResolveService<YoService>(HttpContextBase);
+                await srv.Any(new Yo { Name = name, Message = message });
+                return "Yo";
+            } catch (Exception e) {
+                return "not Yo! " + e.Message;
+            }
+            
         }
 
     }
