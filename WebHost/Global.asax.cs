@@ -1,4 +1,4 @@
-﻿using ServiceImplementations.Shared;
+﻿using ServiceImplementations.Common;
 
 namespace WebHost
 {
@@ -6,7 +6,7 @@ namespace WebHost
     {
         protected void Application_Start()
         {
-            new AppHost().Init();
+            AppStarter.Start();
         }
 
     }

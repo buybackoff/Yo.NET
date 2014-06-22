@@ -1,10 +1,11 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 using ServiceStack;
 using ServiceStack.Auth;
 
-namespace ServiceImplementations.Shared {
+namespace ServiceImplementations.Common {
     public class UserSession : AuthUserSession {
-        public string CustomProperty { get; set; }
+        public string SignalRConnectionId { get; set; }
+        public long UserCounter { get; set; }
 
         [DataMember]
         public string ProfileUrl64 { get; set; }
@@ -40,7 +41,6 @@ namespace ServiceImplementations.Shared {
                 }
             } catch { }
         }
-
 
     }
 

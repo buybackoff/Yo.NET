@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using Fredis;
@@ -10,10 +9,10 @@ using ServiceStack.Configuration;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
 
-namespace ServiceImplementations.Shared {
+namespace ServiceImplementations.Common {
     public class AppHost : AppHostBase {
         public AppHost() //Tell ServiceStack the name and where to find your web services
-            : base("ServiceStack minimal template", typeof(HelloService).Assembly) { }
+            : base("ServiceStack minimal template", typeof(YoService).Assembly) { }
 
         public override void Configure(Funq.Container container) {
             //Set JSON web services to return idiomatic JSON camelCase properties
@@ -30,7 +29,7 @@ namespace ServiceImplementations.Shared {
                 : new AppSettings();
 
             SetConfig(new HostConfig {
-                DebugMode = appSettings.Get("DebugMode", false),
+                DebugMode = appSettings.Get("DebugMode", true),
                 StripApplicationVirtualPath = appSettings.Get("StripApplicationVirtualPath", false),
                 AdminAuthSecret = appSettings.GetString("AuthSecret"),
             });
@@ -63,6 +62,12 @@ namespace ServiceImplementations.Shared {
             // TODO on top of .NET's built+Redis (two layers)
             container.Register<ICacheClient>(new MemoryCacheClient());
 
+            // T <-> byte[] serializer
+            container.Register<ISerializer>(new JsonSerializer());
+            var redis = new Redis("localhost", "Yo.NET") {
+                Serializer = container.Resolve<ISerializer>()
+            };
+            container.Register(redis);
 
             Plugins.Add(new AuthFeature(() => new UserSession(),
                 new IAuthProvider[] {
@@ -88,6 +93,12 @@ namespace ServiceImplementations.Shared {
 
         public static void Start() {
             new AppHost().Init();
+        }
+    }
+
+    public class AppStarter {
+        public static void Start() {
+            AppHost.Start();
         }
     }
 }

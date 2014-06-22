@@ -22,6 +22,8 @@
     <IISExpressUseClassicPipelineMode />
     <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,21 +46,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="ServiceStack">
-      <HintPath>..\packages\ServiceStack.4.0.22\lib\net40\ServiceStack.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Client">
-      <HintPath>..\packages\ServiceStack.Client.4.0.22\lib\net40\ServiceStack.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Common">
-      <HintPath>..\packages\ServiceStack.Common.4.0.22\lib\net40\ServiceStack.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Interfaces">
-      <HintPath>..\packages\ServiceStack.Interfaces.4.0.22\lib\net40\ServiceStack.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Text">
-      <HintPath>..\packages\ServiceStack.Text.4.0.22\lib\net40\ServiceStack.Text.dll</HintPath>
-    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -73,6 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FrontEnd\app\404.html" />
+    <Content Include="FrontEnd\app\bower_components\angular-sanitize\angular-sanitize.js" />
+    <Content Include="FrontEnd\app\bower_components\angular-sanitize\angular-sanitize.min.js" />
+    <Content Include="FrontEnd\app\bower_components\angular\angular-csp.css" />
+    <Content Include="FrontEnd\app\bower_components\angular\angular.js" />
+    <Content Include="FrontEnd\app\bower_components\angular\angular.min.js" />
     <Content Include="FrontEnd\app\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="FrontEnd\app\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="FrontEnd\app\bower_components\bootstrap\dist\css\bootstrap.css" />
@@ -102,6 +94,33 @@
     <Content Include="FrontEnd\app\bower_components\bootstrap\test-infra\s3_cache.py" />
     <Content Include="FrontEnd\app\bower_components\es6-promise\promise.js" />
     <Content Include="FrontEnd\app\bower_components\es6-promise\promise.min.js" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\.gitignore" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\BUILD\BUILD.js" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\assets\css\bootstrap-responsive.min.css" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\assets\css\bootstrap.min.css" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\assets\css\demo.css" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\assets\img\glyphicons-halflings-white.png" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\assets\img\glyphicons-halflings.png" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\custom-class\index.html" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\hello-world\index.html" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\hello-world\withoutBullets.html" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\hello-world\withoutButtons.html" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\html-tooltip\index.html" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\index.html" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\multi-page\index.html" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\multi-page\second.html" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\programmatic\index.html" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\RTL\index.html" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\example\withoutElement\index.html" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\intro.js" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\introjs-rtl.css" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\introjs.css" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\minified\intro.min.js" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\minified\introjs-rtl.min.css" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\minified\introjs.min.css" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\themes\introjs-nassim.css" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\themes\introjs-nazanin.css" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\themes\introjs-royal.css" />
     <Content Include="FrontEnd\app\bower_components\jquery\dist\jquery.js" />
     <Content Include="FrontEnd\app\bower_components\jquery\dist\jquery.min.js" />
     <Content Include="FrontEnd\app\bower_components\jquery\MIT-LICENSE.txt" />
@@ -339,6 +358,8 @@
     <Content Include="FrontEnd\app\bower_components\react\react-with-addons.min.js" />
     <Content Include="FrontEnd\app\bower_components\react\react.js" />
     <Content Include="FrontEnd\app\bower_components\react\react.min.js" />
+    <Content Include="FrontEnd\app\bower_components\signalr\jquery.signalR.js" />
+    <Content Include="FrontEnd\app\bower_components\signalr\jquery.signalR.min.js" />
     <Content Include="FrontEnd\app\bower_components\todomvc-common\base.css" />
     <Content Include="FrontEnd\app\bower_components\todomvc-common\base.js" />
     <Content Include="FrontEnd\app\bower_components\todomvc-common\bg.png" />
@@ -358,7 +379,9 @@
     <Content Include="FrontEnd\test\spec\test.js" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -469,7 +492,26 @@
     <Content Include="FrontEnd\.editorconfig" />
     <Content Include="FrontEnd\.jshintrc" />
     <Content Include="README.md" />
-    <Content Include="packages.config" />
+    <Content Include="FrontEnd\app\bower_components\signalr\.bower.json" />
+    <Content Include="FrontEnd\app\bower_components\signalr\bower.json" />
+    <Content Include="FrontEnd\app\bower_components\signalr\LICENSE.md" />
+    <Content Include="FrontEnd\app\bower_components\signalr\README.md" />
+    <Content Include="FrontEnd\app\bower_components\angular\.bower.json" />
+    <Content Include="FrontEnd\app\bower_components\angular\angular.min.js.gzip" />
+    <Content Include="FrontEnd\app\bower_components\angular\angular.min.js.map" />
+    <Content Include="FrontEnd\app\bower_components\angular\bower.json" />
+    <Content Include="FrontEnd\app\bower_components\angular\README.md" />
+    <Content Include="FrontEnd\app\bower_components\angular-sanitize\.bower.json" />
+    <Content Include="FrontEnd\app\bower_components\angular-sanitize\angular-sanitize.min.js.map" />
+    <Content Include="FrontEnd\app\bower_components\angular-sanitize\bower.json" />
+    <Content Include="FrontEnd\app\bower_components\angular-sanitize\README.md" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\.bower.json" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\.spmignore" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\bower.json" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\component.json" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\Makefile" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\package.json" />
+    <Content Include="FrontEnd\app\bower_components\intro.js\README.md" />
     <None Include="Properties\PublishProfiles\Files.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -484,8 +526,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="FrontEnd\app\scripts\app.ts" />
+    <TypeScriptCompile Include="FrontEnd\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="FrontEnd\typings\es6-promises\es6-promises.d.ts" />
+    <TypeScriptCompile Include="FrontEnd\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="FrontEnd\typings\server.d.ts" />
+    <TypeScriptCompile Include="FrontEnd\typings\signalr\signalr.d.ts" />
     <TypeScriptCompile Include="FrontEnd\typings\tsd.d.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -493,7 +538,7 @@
       <Project>{574d2615-0b1c-437b-8874-5eeb0b77af20}</Project>
       <Name>Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Services\ServiceImplementations.csproj">
+    <ProjectReference Include="..\ServiceImplementatios\ServiceImplementations.csproj">
       <Project>{3b66551b-8596-49c0-8348-fcb72dc3eed9}</Project>
       <Name>ServiceImplementations</Name>
     </ProjectReference>
@@ -533,6 +578,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
