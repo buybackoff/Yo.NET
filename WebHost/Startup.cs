@@ -15,7 +15,8 @@ namespace WebHost {
             GlobalHost.DependencyResolver.Register(typeof(IUserIdProvider), () => new CustomUserIdProvider());
             // Any connection or hub wire up and configuration should go here
             var transportManager = GlobalHost.DependencyResolver.Resolve<ITransportManager>() as TransportManager;
-            transportManager.Remove("websockets");
+            // fixed issue with web sockets in SS 4.0.23 (just replaced one dll in packages)
+            //transportManager.Remove("websockets");
             app.MapSignalR();
             
         }
