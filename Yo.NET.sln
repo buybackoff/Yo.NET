@@ -21,16 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F934CA
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{B51B5DED-DF6C-4ECE-88FF-7A09C049DEB6}"
-	ProjectSection(SolutionItems) = preProject
-		packages\Redis-64.2.6.12.1\tools\redis-benchmark.exe = packages\Redis-64.2.6.12.1\tools\redis-benchmark.exe
-		packages\Redis-64.2.6.12.1\tools\redis-check-aof.exe = packages\Redis-64.2.6.12.1\tools\redis-check-aof.exe
-		packages\Redis-64.2.6.12.1\tools\redis-check-dump.exe = packages\Redis-64.2.6.12.1\tools\redis-check-dump.exe
-		packages\Redis-64.2.6.12.1\tools\redis-cli.exe = packages\Redis-64.2.6.12.1\tools\redis-cli.exe
-		packages\Redis-64.2.6.12.1\tools\redis-server.exe = packages\Redis-64.2.6.12.1\tools\redis-server.exe
-		packages\Redis-64.2.6.12.1\tools\redis.conf = packages\Redis-64.2.6.12.1\tools\redis.conf
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,8 +42,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{B51B5DED-DF6C-4ECE-88FF-7A09C049DEB6} = {EB4D7E63-C327-4181-B323-0B2BC7BEC177}
 	EndGlobalSection
 EndGlobal

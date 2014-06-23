@@ -2,7 +2,9 @@ using System.Runtime.Serialization;
 using ServiceStack;
 using ServiceStack.Auth;
 
-namespace ServiceImplementations.Common {
+namespace ServiceImplementations {
+
+
     public class UserSession : AuthUserSession {
         public string SignalRConnectionId { get; set; }
         public long UserCounter { get; set; }

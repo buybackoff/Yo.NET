@@ -1,7 +1,7 @@
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Owin;
-using ServiceImplementations.Common;
+using ServiceImplementations;
 
 [assembly: OwinStartup(typeof(WebHost.Startup))]
 

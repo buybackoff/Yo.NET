@@ -118,18 +118,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\CustomUserIdProvider.cs" />
-    <Compile Include="Common\ServiceBase.cs" />
+    <Compile Include="AuthorizeAttribute.cs">
+      <DependentUpon>Common.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserIdProvider.cs">
+      <DependentUpon>Common.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceBase.cs">
+      <DependentUpon>Common.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common.cs" />
+    <Compile Include="SignalrToServiceStackExtensions.cs">
+      <DependentUpon>Common.cs</DependentUpon>
+    </Compile>
     <Compile Include="YoHub.cs" />
-    <Compile Include="Common\UserSession.cs" />
+    <Compile Include="UserSession.cs">
+      <DependentUpon>Common.cs</DependentUpon>
+    </Compile>
     <Compile Include="CounterService.cs" />
-    <Compile Include="Common\HubBase.cs" />
+    <Compile Include="HubBase.cs">
+      <DependentUpon>Common.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TodoRepository.cs">
       <DependentUpon>TodoService.cs</DependentUpon>
     </Compile>
     <Compile Include="TodoService.cs" />
-    <Compile Include="Common\AppHost.cs" />
+    <Compile Include="AppHost.cs">
+      <DependentUpon>Common.cs</DependentUpon>
+    </Compile>
     <Compile Include="YoService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -139,7 +156,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

@@ -9,7 +9,7 @@ using ServiceStack.Configuration;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
 
-namespace ServiceImplementations.Common {
+namespace ServiceImplementations {
     public class AppHost : AppHostBase {
         public AppHost() //Tell ServiceStack the name and where to find your web services
             : base("ServiceStack minimal template", typeof(YoService).Assembly) { }

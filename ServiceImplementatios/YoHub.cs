@@ -1,9 +1,6 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Contracts.ServiceModels;
-using ServiceImplementations.Common;
-using ServiceStack;
 
 namespace ServiceImplementations {
 
@@ -18,7 +15,7 @@ namespace ServiceImplementations {
         public async Task<string> Yo(string name, string message) {
             
             try {
-                var srv = HostContext.ResolveService<YoService>(HttpContextBase);
+                var srv = ResolveService<YoService>();
                 await srv.Any(new Yo { Name = name, Message = message });
                 return "Yo";
             } catch (Exception e) {

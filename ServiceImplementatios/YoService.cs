@@ -1,16 +1,10 @@
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Contracts.ServiceModels;
-using ServiceImplementations.Common;
 
 namespace ServiceImplementations {
 
-
-
-    //Can be called via any endpoint or format, see: http://mono.servicestack.net/ServiceStack.Hello/
-
-    public class YoService : ServiceBase {
+    public class YoService : HttpServiceBase {
         public async Task<YoResponse> Any(Yo request) {
 
             // call service from another service
@@ -56,7 +50,7 @@ namespace ServiceImplementations {
             if (!string.IsNullOrEmpty(request.Message))
                 echoHub.Clients.All.AddMessage(messageLine);
             echoHub.Clients.All.SetAllYos(counter.TotalCounter);
-            echoHub.Clients.User(SessionId).SetMyYos(counter.UserCounter);
+            echoHub.Clients.User(HubUserId).SetMyYos(counter.UserCounter);
 
             var resp = new YoResponse {
                 AllYos = counter.TotalCounter,
@@ -65,7 +59,7 @@ namespace ServiceImplementations {
 
             if (request.WithHistory) {
                 var hist = await Redis.LRangeAsync<string>("yo:messages", 0, 100);
-                resp.History = hist;//.Select(y => y.Name + "|" + y.Message).ToArray();
+                resp.History = hist;
             }
 
             return resp;
