@@ -1,7 +1,7 @@
-﻿TodoMVC with ReactJS and TypeScript
+﻿Yo.NET web host
 ================
 
-Steps
+Steps for React (TODO)
 --------------
 
 * Run `yo gulp-webapp`
