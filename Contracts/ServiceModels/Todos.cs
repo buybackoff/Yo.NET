@@ -22,5 +22,4 @@ namespace Contracts.ServiceModels {
         public bool Done { get; set; }
     }
 
-
 }
