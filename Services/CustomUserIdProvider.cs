@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNet.SignalR;
 
-namespace ServiceImplementations {
+namespace Services {
     /// <summary>
     /// SignalR user id is ServiceStack's session id
     /// </summary>

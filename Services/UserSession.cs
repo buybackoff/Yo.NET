@@ -2,7 +2,7 @@ using System.Runtime.Serialization;
 using ServiceStack;
 using ServiceStack.Auth;
 
-namespace ServiceImplementations {
+namespace Services {
 
 
     public class UserSession : AuthUserSession {

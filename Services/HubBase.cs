@@ -6,7 +6,7 @@ using ServiceStack;
 using ServiceStack.Caching;
 using ServiceStack.Web;
 
-namespace ServiceImplementations {
+namespace Services {
 
     // Some dependency resolutions here
     public abstract class HubBase<T> : Hub<T> where T : class {
@@ -37,9 +37,9 @@ namespace ServiceImplementations {
             }
         }
 
-        public HttpContextBase HttpContextBase {
-            get { return Context.Request.GetHttpContext(); }
-        }
+        //public HttpContextBase HttpContextBase {
+        //    get { return Context.Request.GetHttpContext(); }
+        //}
 
 
         protected TService ResolveService<TService>() where TService : class, IService {
@@ -57,4 +57,14 @@ namespace ServiceImplementations {
 
     }
 
+    public static class SystemWebExtensions {
+        public static HttpContextBase GetHttpContext(this Microsoft.AspNet.SignalR.IRequest request) {
+            object value;
+            if (request.Environment.TryGetValue(typeof(HttpContextBase).FullName, out value)) {
+                return (HttpContextBase)value;
+            }
+
+            return null;
+        }
+    }
 }

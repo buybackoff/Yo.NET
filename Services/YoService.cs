@@ -2,7 +2,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Contracts.ServiceModels;
 
-namespace ServiceImplementations {
+namespace Services {
 
     public class YoService : HttpServiceBase {
         public async Task<YoResponse> Any(Yo request) {

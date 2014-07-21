@@ -9,13 +9,12 @@ using ServiceStack.Configuration;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
 
-namespace ServiceImplementations {
-    public class AppHost : AppHostBase {
+namespace Services {
+    public class AppHost : AppHostHttpListenerBase {
         public AppHost() //Tell ServiceStack the name and where to find your web services
             : base("ServiceStack minimal template", typeof(YoService).Assembly) { }
 
         public override void Configure(Funq.Container container) {
-
             //Set JSON web services to return idiomatic JSON camelCase properties
             ServiceStack.Text.JsConfig.EmitCamelCaseNames = true;
 
@@ -66,7 +65,7 @@ namespace ServiceImplementations {
 
             // T <-> byte[] serializer
             container.Register<ISerializer>(new JsonSerializer());
-            var redis = new Redis("localhost", "Yo.NET") {
+			var redis = new Redis("localhost,resolveDns=true", "Yo.NET") {
                 Serializer = container.Resolve<ISerializer>()
             };
             container.Register(redis);

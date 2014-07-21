@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 
-namespace ServiceImplementations {
+namespace Services {
 
     // TODO test (rewrite auth logic to use SS with SR's Request)
     // In SR's source code the only attributes used are the ones that implement the 

@@ -4,13 +4,12 @@ using Fredis;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using ServiceStack;
-using ServiceStack.Auth;
 using ServiceStack.Caching;
 using ServiceStack.Data;
 using ServiceStack.Redis;
 using ServiceStack.Web;
 
-namespace ServiceImplementations {
+namespace Services {
 
     // TODO All stuff from AppStart as a property, e.g. PocoPersistor
 

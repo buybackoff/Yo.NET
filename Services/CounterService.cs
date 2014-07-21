@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using ServiceStack;
 
-namespace ServiceImplementations {
+namespace Services {
 
     [Route("/counter")]
     public class Counter { }

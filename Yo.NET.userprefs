@@ -1,12 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Shared.Contracts\MyClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services\Program.cs">
     <Files>
-      <File FileName="Shared.Contracts\MyClass.cs" Line="3" Column="27" />
+      <File FileName="Services\Program.cs" Line="19" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>Contracts\Contracts.PCL.csproj</String>
+  </DisabledProjects>
 </Properties>

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Contracts.ServiceModels;
 
-namespace ServiceImplementations {
+namespace Services {
     public class TodoRepository {
         readonly List<Todo> _todos = new List<Todo>();
 
@@ -14,8 +14,7 @@ namespace ServiceImplementations {
             return _todos;
         }
 
-        public Todo Store(Todo todo) {
-            var existing = _todos.FirstOrDefault(x => x.Id == todo.Id);
+        public Todo Store(Todo todo) {var existing = _todos.FirstOrDefault(x => x.Id == todo.Id);
             if (existing == null) {
                 var newId = _todos.Count > 0 ? _todos.Max(x => x.Id) + 1 : 1;
                 todo.Id = newId;

@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Contracts.ServiceModels;
 
-namespace ServiceImplementations {
+namespace Services {
 
     public interface IEchoHubClient {
         void SetAllYos(long totalCounter);

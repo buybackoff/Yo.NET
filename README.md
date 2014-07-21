@@ -10,7 +10,7 @@ for the front end app.
 Front end development is done with Yeoman, Bower, Gulp and related tools. Both back end and front end
 are hosted in an initially empty ASP.NET application (not MVC, not WebForms). All public contracts
 that could be used by clients are defined in `Contracts` project, and all services and hubs are 
-implemented in `ServiceImplementations` project.
+implemented in `Services` project.
 
 More things to come, yo!
 

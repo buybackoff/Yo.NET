@@ -3,7 +3,7 @@ using Microsoft.AspNet.SignalR;
 using ServiceStack;
 using ServiceStack.Caching;
 
-namespace ServiceImplementations {
+namespace Services {
     public static class SignalrToServiceStackExtensions {
 
         public static string GetCookieValueOrDefault(this IRequest request, string key) {
