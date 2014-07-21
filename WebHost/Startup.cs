@@ -11,7 +11,6 @@ namespace WebHost {
         public void Configuration(IAppBuilder app) {
             // Order is important!!! (was't that obvious!????)
             AppStarter.Start();
-            AppDomain.CurrentDomain.Load(typeof(YoHub).Assembly.FullName);
             // CustomUserIdProvider depends on Request indirectly via SessionFeature TODO check this
             GlobalHost.DependencyResolver.Register(typeof(IUserIdProvider), () => new CustomUserIdProvider());
             // Any connection or hub wire up and configuration should go here
