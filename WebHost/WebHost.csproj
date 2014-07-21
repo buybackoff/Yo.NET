@@ -94,6 +94,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="appsettings.txt" />
     <Content Include="FrontEnd\app\404.html" />
     <Content Include="FrontEnd\app\bower_components\angular-sanitize\angular-sanitize.js" />
     <Content Include="FrontEnd\app\bower_components\angular-sanitize\angular-sanitize.min.js" />
@@ -550,7 +551,6 @@
     <Content Include="FrontEnd\app\bower_components\intro.js\README.md" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Dropbox.pubxml" />
-    <None Include="Properties\PublishProfiles\Files.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

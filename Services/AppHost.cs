@@ -24,7 +24,9 @@ namespace Services {
 
             //Load environment config from text file if exists
             var liveSettings = "~/appsettings.txt".MapHostAbsolutePath();
-            var appSettings = File.Exists(liveSettings)
+
+            var isRunningOnAws = Utils.IsRunningOnAWS();
+            var appSettings = isRunningOnAws  && File.Exists(liveSettings)
                 ? (IAppSettings)new TextFileSettings(liveSettings)
                 : new AppSettings();
 
@@ -64,6 +66,7 @@ namespace Services {
             container.Register<ICacheClient>(new MemoryCacheClient());
 
             // T <-> byte[] serializer
+            var redisConnection = appSettings.GetString("RedisConnectionString");
             container.Register<ISerializer>(new JsonSerializer());
 			var redis = new Redis("localhost,resolveDns=true", "Yo.NET") {
                 Serializer = container.Resolve<ISerializer>()
