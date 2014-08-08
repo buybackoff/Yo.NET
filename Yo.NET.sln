@@ -8,10 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{EB4D
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{574D2615-0B1C-437B-8874-5EEB0B77AF20}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHost", "WebHost\WebHost.csproj", "{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F934CA30-41CB-43DA-937D-13883F7288AF}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -19,11 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F934CA
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts.PCL", "Contracts\Contracts.PCL.csproj", "{9EFD99C8-18CF-4670-8351-70E2B975917B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "src\Contracts\Contracts.csproj", "{9EFD99C8-18CF-4670-8351-70E2B975917B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{3B66551B-8596-49C0-8348-FCB72DC3EED9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "src\Services\Services.csproj", "{3B66551B-8596-49C0-8348-FCB72DC3EED9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHost", "SelfHost\SelfHost.csproj", "{30865151-2C2F-45AA-A09C-6769090CB2BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHost", "src\WebHost\WebHost.csproj", "{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{574D2615-0B1C-437B-8874-5EEB0B77AF20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{574D2615-0B1C-437B-8874-5EEB0B77AF20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{574D2615-0B1C-437B-8874-5EEB0B77AF20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{574D2615-0B1C-437B-8874-5EEB0B77AF20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9EFD99C8-18CF-4670-8351-70E2B975917B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9EFD99C8-18CF-4670-8351-70E2B975917B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EFD99C8-18CF-4670-8351-70E2B975917B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,10 +35,10 @@ Global
 		{3B66551B-8596-49C0-8348-FCB72DC3EED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B66551B-8596-49C0-8348-FCB72DC3EED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B66551B-8596-49C0-8348-FCB72DC3EED9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30865151-2C2F-45AA-A09C-6769090CB2BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30865151-2C2F-45AA-A09C-6769090CB2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30865151-2C2F-45AA-A09C-6769090CB2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30865151-2C2F-45AA-A09C-6769090CB2BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
