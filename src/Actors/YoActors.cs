@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Ractor;
 
-// TODO move to Actors assembly
-namespace Yo.Services
+namespace Yo.Actors
 {
 
     public class YoCounter : Actor<string, long> {

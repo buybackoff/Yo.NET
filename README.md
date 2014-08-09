@@ -1,6 +1,6 @@
 ﻿Yo.NET
 ===========
-A template application showing how to integrate ServiceStack and SignalR on the server side, and how to develop the 
+A template application showing how to integrate WebAPI and SignalR on the server side, and how to develop the 
 client side independently from the server. Only server API is used by clients.
 
 TypeScript is used to define server API. With Web Essentials 2.1 TypeScript definition files could be 

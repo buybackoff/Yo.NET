@@ -1,6 +1,8 @@
+using System;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Ractor;
+using Yo.Actors;
 using Yo.Contracts;
 
 namespace Yo.Services {
@@ -76,16 +78,13 @@ namespace Yo.Services {
         // Using Ractor is optional 
         //[Authorize]
         [Route("counter")]
-        public YoCounterResponse GetCounter() {
+        public async Task<YoCounterResponse> GetCounter() {
             var countActor = new YoCounter();
-            var count = countActor.PostAndGetResultAsync(null);
-            var userCount = countActor.PostAndGetResultAsync(User.Identity.Name);
-            // Actors are running in parallel
-            // TODO WhenAll for Ractors
-            Task.WhenAll(count, userCount);
-            //var result = Actors.Parallel(countActor, countActor)
-            //    .PostAndGetResult(Tuple.Create<string, string>(null, User.Identity.Name));
-            return new YoCounterResponse { TotalCounter = count.Result, UserCounter = userCount.Result };
+            var result = await countActor
+                .ParallelWith(countActor)
+                .PostAndGetResultAsync(Tuple.Create<string, string>(null, User.Identity.Name));
+            return new YoCounterResponse { TotalCounter = result.Item1, 
+                UserCounter = result.Item2 };
         }
     }
 }

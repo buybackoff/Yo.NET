@@ -64,13 +64,13 @@
     <Reference Include="Owin">
       <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Ractor, Version=0.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ractor, Version=0.2.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Ractor.0.2.3\lib\net40\Ractor.dll</HintPath>
+      <HintPath>..\..\packages\Ractor.0.2.4\lib\net40\Ractor.dll</HintPath>
     </Reference>
     <Reference Include="Ractor.Persistence, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Ractor.Persistence.0.2.3\lib\net40\Ractor.Persistence.dll</HintPath>
+      <HintPath>..\..\packages\Ractor.Persistence.0.2.4\lib\net40\Ractor.Persistence.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Common, Version=4.0.24.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -122,9 +122,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="YoActors.cs">
-      <DependentUpon>Yo.cs</DependentUpon>
-    </Compile>
     <Compile Include="HubBase.cs" />
     <Compile Include="ControllerBase.cs" />
     <Compile Include="YoHub.cs">
@@ -143,6 +140,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Actors\Actors.csproj">
+      <Project>{75f83004-0120-44d9-8d3a-3790e6674113}</Project>
+      <Name>Actors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Contracts\Contracts.csproj">
       <Project>{9efd99c8-18cf-4670-8351-70e2b975917b}</Project>
       <Name>Contracts</Name>
