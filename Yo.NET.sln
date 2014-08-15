@@ -27,22 +27,31 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actors", "src\Actors\Actors
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		AzureWebSites|Any CPU = AzureWebSites|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EFD99C8-18CF-4670-8351-70E2B975917B}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{9EFD99C8-18CF-4670-8351-70E2B975917B}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
 		{9EFD99C8-18CF-4670-8351-70E2B975917B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9EFD99C8-18CF-4670-8351-70E2B975917B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EFD99C8-18CF-4670-8351-70E2B975917B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EFD99C8-18CF-4670-8351-70E2B975917B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B66551B-8596-49C0-8348-FCB72DC3EED9}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{3B66551B-8596-49C0-8348-FCB72DC3EED9}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
 		{3B66551B-8596-49C0-8348-FCB72DC3EED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3B66551B-8596-49C0-8348-FCB72DC3EED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B66551B-8596-49C0-8348-FCB72DC3EED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B66551B-8596-49C0-8348-FCB72DC3EED9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
 		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15F0E12B-87F3-4DFB-8B07-2FE377D3DE73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F83004-0120-44D9-8D3A-3790E6674113}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{75F83004-0120-44D9-8D3A-3790E6674113}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
 		{75F83004-0120-44D9-8D3A-3790E6674113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{75F83004-0120-44D9-8D3A-3790E6674113}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75F83004-0120-44D9-8D3A-3790E6674113}.Release|Any CPU.ActiveCfg = Release|Any CPU

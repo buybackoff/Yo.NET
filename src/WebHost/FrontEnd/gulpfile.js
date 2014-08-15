@@ -4,9 +4,33 @@
 var gulp = require('gulp');
 var path = require('path');
 var fs = require('fs');
+var rename = require('gulp-rename');
+var templates = require('gulp-angular-templatecache');
+var minifyHTML = require('gulp-minify-html');
 
 // load plugins
 var $ = require('gulp-load-plugins')();
+
+gulp.task('templates', function () {
+    gulp.src('app/modules/**/*.html')
+      .pipe(minifyHTML({
+          quotes: true
+      }))
+      .pipe(templates('templates.js', {
+          root: '/modules'
+      }))
+      .pipe(rename('generated_templates.js'))
+      .pipe(gulp.dest('.tmp/scripts'));
+
+    //gulp.src([
+    //    'app/scripts/templates.js',
+    //        '.tmp/scripts/generated_templates.js'
+    //])
+    //    .pipe($.concat('templates.js'))
+    //    .pipe($.uglify())
+    //    .pipe(gulp.dest('.tmp/scripts'));;
+});
+
 
 gulp.task('jsx', function () {
     return gulp.src('app/scripts/**/*.jsx')
@@ -22,9 +46,9 @@ gulp.task('styles', function () {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src('app/scripts/**/*.js')
-        .pipe($.jshint())
-        .pipe($.jshint.reporter(require('jshint-stylish')))
+    return gulp.src(['app/scripts/**/*.js', 'app/modules/**/*.js'])
+        //.pipe($.jshint())
+        //.pipe($.jshint.reporter(require('jshint-stylish')))
         .pipe($.size());
 });
 
@@ -39,14 +63,14 @@ gulp.task('servertypes', function () {
         }));
 });
 
-gulp.task('html', ['styles', 'scripts', 'jsx'], function () {
+gulp.task('html', ['styles', 'scripts', 'jsx', 'templates'], function () {
     var jsFilter = $.filter('**/*.js');
     var cssFilter = $.filter('**/*.css');
 
     return gulp.src('app/*.html')
         .pipe($.useref.assets({ searchPath: '{.tmp,app}' }))
         .pipe(jsFilter)
-        .pipe($.uglify())
+        //.pipe($.uglify())
         .pipe(jsFilter.restore())
         .pipe(cssFilter)
         .pipe($.csso())
@@ -69,8 +93,13 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
+    // TODO not included in main, bowerFiles ignores them
+    gulp.src('app/bower_components/components-font-awesome/**/*.{eot,svg,ttf,woff,otf}')
+        .pipe($.flatten())
+        .pipe(gulp.dest('dist/fonts'))
+        .pipe($.size());
     return $.bowerFiles()
-        .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
+        .pipe($.filter('/**/*.{eot,svg,ttf,woff}'))
         .pipe($.flatten())
         .pipe(gulp.dest('dist/fonts'))
         .pipe($.size());

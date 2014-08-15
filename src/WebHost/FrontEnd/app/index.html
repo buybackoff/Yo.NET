@@ -10,37 +10,60 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/intro.js/introjs.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/site.css">
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
 </head>
-<body ng-app="yoApp" ng-controller="yoCtrl" id="yoApp">
+<body ng-app="yoApp" id="yoApp">
     <!--[if lt IE 10]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div class="container">
-        <div class="header">
-            <!--<ul class="nav nav-pills pull-right">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-controller="indexController">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </button>
+                    <a class="navbar-brand" href="#/">Home</a>
+                </div>
+                <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
+                        <li data-ng-hide="!authentication.isAuth"><a href="#/yo">Yo</a></li>
+                        <li data-ng-hide="!authentication.isAuth"><a href="#/refresh">Refresh Token</a></li>
+                        <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
+                        <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
+                        <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div data-ng-view="">
+            </div>
+        </div>
+
+        <!--<div class="header">
+            <ul class="nav nav-pills pull-right">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
-                </ul>-->
+                </ul>
             <p class="pull-right" data-step="2" data-intro="Enter your name, yo. A valid Twitter account will be recognized and a link will be added to your message, yo.">@ <input ng-model="state.name" type="text" value="{{state.name}}" /></p>
             <h3 class="text-muted"><a href="https://github.com/buybackoff/Yo.NET" data-step="1" data-intro="GitHub repo is here.">Yo.NET</a></h3>
-        </div>
-        <div class="jumbotron">
-            <h1 data-step="5" data-intro="Yo, this is how many of them are already!">All <strong>Yo</strong>s: <strong>{{state.totalCount}}</strong> <br /> My <strong>Yo</strong>s: <strong>{{state.userCount}}</strong></h1>
-            <p data-step="3" data-intro="Enter your message, yo.">Message: <input ng-model="state.messageText" type="text" value="{{state.messageText}}" /></p>
-            <button data-step="4" data-intro="Send Yo to the world, yo." class="btn btn-lg btn-success" ng-click="click()"><strong>Yo</strong></button>
-        </div>
-        <ul data-step="6" data-intro="These are the latest Yos with messages, yo.">
-            <li ng-repeat="message in state.messages | reverse track by $index " ng-bind-html="message"></li>
-        </ul>
+        </div>-->
+
         <div class="footer">
             <p>
                 ♥ from <a href="https://twitter.com/buybackoff">VB</a> <a><span class="pull-right" onclick="introJs().start();">Show tips</span></a>
@@ -67,7 +90,10 @@
     <script src="bower_components/signalr/jquery.signalR.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
     <script src="bower_components/intro.js/intro.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js scripts/plugins.js -->
@@ -85,9 +111,33 @@
     <script src="bower_components/bootstrap/js/tab.js"></script>
     <!-- endbuild -->
     <script src="/signalr/hubs"></script>
+
+    <!-- build:js scripts/templates.js -->
+    <script src="scripts/templates.js"></script>
+    <script src="scripts/generated_templates.js"></script>
+    <!-- endbuild -->
+
     <!-- build:js scripts/app.js -->
+    
+    <!-- Load Auth -->
+    <script src="modules/auth/auth.js"></script>
+    <!-- Load Auth services -->
+    <script src="modules/auth/services/authInterceptorService.js"></script>
+    <script src="modules/auth/services/authService.js"></script>
+    <script src="modules/auth/services/tokensManagerService.js"></script>
+    <!-- Load Auth controllers -->
+    <script src="modules/auth/controllers/indexController.js"></script>
+    <script src="modules/auth/controllers/homeController.js"></script>
+    <script src="modules/auth/controllers/loginController.js"></script>
+    <script src="modules/auth/controllers/signupController.js"></script>
+    <script src="modules/auth/controllers/refreshController.js"></script>
+    <script src="modules/auth/controllers/tokensManagerController.js"></script>
+    <script src="modules/auth/controllers/associateController.js"></script>
+    <!-- Load Yo -->
+    <script src="modules/yo/yo.js"></script>
     <script src="scripts/app.js"></script>
     <!-- endbuild -->
+
 
 </body>
 </html>

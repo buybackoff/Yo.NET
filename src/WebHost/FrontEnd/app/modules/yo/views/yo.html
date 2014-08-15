@@ -1,0 +1,8 @@
+﻿<div class="jumbotron">
+    <h1 data-step="5" data-intro="Yo, this is how many of them are already!">All <strong>Yo</strong>s: <strong>{{state.totalCount}}</strong> <br /> My <strong>Yo</strong>s: <strong>{{state.userCount}}</strong></h1>
+    <p data-step="3" data-intro="Enter your message, yo.">Message: <input ng-model="state.messageText" type="text" value="{{state.messageText}}" /></p>
+    <button data-step="4" data-intro="Send Yo to the world, yo." class="btn btn-lg btn-success" ng-click="click()"><strong>Yo</strong></button>
+</div>
+<ul data-step="6" data-intro="These are the latest Yos with messages, yo.">
+    <li ng-repeat="message in state.messages | reverse track by $index " ng-bind-html="message"></li>
+</ul>

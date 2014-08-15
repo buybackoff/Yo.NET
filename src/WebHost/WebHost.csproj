@@ -21,6 +21,7 @@
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>04aaebd0</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,15 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\packages\AutoMapper.3.3.0-ci1017\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\..\packages\AutoMapper.3.3.0-ci1017\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -57,6 +67,15 @@
       <Private>True</Private>
       <HintPath>..\..\packages\FSharp.Core.Microsoft.Signed.0.0.1-beta1\lib\net45\FSharp.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Core.2.1.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
       <Private>True</Private>
@@ -65,9 +84,18 @@
       <HintPath>..\..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.1.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Protocol.Extensions">
+      <HintPath>..\..\packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.0-RC2\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.Owin.3.0.0-rc2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors">
+      <HintPath>..\..\packages\Microsoft.Owin.Cors.3.0.0-rc2\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.FileSystems">
+      <HintPath>..\..\packages\Microsoft.Owin.FileSystems.3.0.0-rc2\lib\net45\Microsoft.Owin.FileSystems.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb">
       <HintPath>..\..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0-rc2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
@@ -76,6 +104,25 @@
     <Reference Include="Microsoft.Owin.Security">
       <HintPath>..\..\packages\Microsoft.Owin.Security.3.0.0-rc2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Owin.Security.Cookies.3.0.0-rc2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.Facebook.3.0.0-rc2\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.Google.3.0.0-rc2\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.OAuth.3.0.0-rc2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OpenIdConnect">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.OpenIdConnect.3.0.0-rc2\lib\net45\Microsoft.Owin.Security.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.StaticFiles">
+      <HintPath>..\..\packages\Microsoft.Owin.StaticFiles.3.0.0-rc2\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -96,14 +143,24 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\..\packages\System.IdentityModel.Tokens.Jwt.4.0.0-RC2\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Cors, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Cors.5.2.0\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -121,15 +178,36 @@
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Thinktecture.IdentityServer.Core.EntityFramework">
+      <HintPath>..\..\packages\Thinktecture.IdentityServer.v3.EntityFramework.1.0.0-beta1\lib\net45\Thinktecture.IdentityServer.Core.EntityFramework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FrontEnd\app\404.html" />
+    <Content Include="FrontEnd\app\authComplete.html" />
     <Content Include="FrontEnd\app\bot.html" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\build\loading-bar.css" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\build\loading-bar.js" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\build\loading-bar.min.css" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\build\loading-bar.min.js" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\Gruntfile.js" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\src\loading-bar.css" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\src\loading-bar.js" />
+    <Content Include="FrontEnd\app\bower_components\angular-local-storage\angular-local-storage.js" />
+    <Content Include="FrontEnd\app\bower_components\angular-local-storage\angular-local-storage.min.js" />
+    <Content Include="FrontEnd\app\bower_components\angular-local-storage\demo\demo-app.js" />
+    <Content Include="FrontEnd\app\bower_components\angular-local-storage\demo\demo-style.css" />
+    <Content Include="FrontEnd\app\bower_components\angular-local-storage\demo\demo.html" />
+    <Content Include="FrontEnd\app\bower_components\angular-local-storage\Gruntfile.js" />
+    <Content Include="FrontEnd\app\bower_components\angular-route\angular-route.js" />
+    <Content Include="FrontEnd\app\bower_components\angular-route\angular-route.min.js" />
     <Content Include="FrontEnd\app\bower_components\angular-sanitize\angular-sanitize.js" />
     <Content Include="FrontEnd\app\bower_components\angular-sanitize\angular-sanitize.min.js" />
     <Content Include="FrontEnd\app\bower_components\angular\angular-csp.css" />
     <Content Include="FrontEnd\app\bower_components\angular\angular.js" />
     <Content Include="FrontEnd\app\bower_components\angular\angular.min.js" />
+    <Content Include="FrontEnd\app\bower_components\bootstrap-social\.gitignore" />
+    <Content Include="FrontEnd\app\bower_components\bootstrap-social\bootstrap-social.css" />
     <Content Include="FrontEnd\app\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="FrontEnd\app\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="FrontEnd\app\bower_components\bootstrap\dist\css\bootstrap.css" />
@@ -157,6 +235,10 @@
     <Content Include="FrontEnd\app\bower_components\bootstrap\js\transition.js" />
     <Content Include="FrontEnd\app\bower_components\bootstrap\test-infra\requirements.txt" />
     <Content Include="FrontEnd\app\bower_components\bootstrap\test-infra\s3_cache.py" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\.gitignore" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\css\font-awesome.css" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\css\font-awesome.min.css" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="FrontEnd\app\bower_components\es6-promise\promise.js" />
     <Content Include="FrontEnd\app\bower_components\es6-promise\promise.min.js" />
     <Content Include="FrontEnd\app\bower_components\intro.js\.gitignore" />
@@ -430,8 +512,28 @@
     <Content Include="FrontEnd\app\bower_components\todomvc-common\bg.png" />
     <Content Include="FrontEnd\app\favicon.ico" />
     <Content Include="FrontEnd\app\index.html" />
+    <TypeScriptCompile Include="FrontEnd\app\modules\auth\auth.ts" />
+    <TypeScriptCompile Include="FrontEnd\app\modules\auth\controllers\associateController.ts" />
+    <TypeScriptCompile Include="FrontEnd\app\modules\auth\controllers\homeController.ts" />
+    <TypeScriptCompile Include="FrontEnd\app\modules\auth\controllers\indexController.ts" />
+    <TypeScriptCompile Include="FrontEnd\app\modules\auth\controllers\loginController.ts" />
+    <TypeScriptCompile Include="FrontEnd\app\modules\auth\controllers\refreshController.ts" />
+    <TypeScriptCompile Include="FrontEnd\app\modules\auth\controllers\signupController.ts" />
+    <TypeScriptCompile Include="FrontEnd\app\modules\auth\controllers\tokensManagerController.ts" />
+    <TypeScriptCompile Include="FrontEnd\app\modules\auth\services\authInterceptorService.ts" />
+    <TypeScriptCompile Include="FrontEnd\app\modules\auth\services\authService.ts" />
+    <TypeScriptCompile Include="FrontEnd\app\modules\auth\services\tokensManagerService.ts" />
+    <Content Include="FrontEnd\app\modules\auth\views\associate.html" />
+    <Content Include="FrontEnd\app\modules\auth\views\home.html" />
+    <Content Include="FrontEnd\app\modules\auth\views\login.html" />
+    <Content Include="FrontEnd\app\modules\auth\views\refresh.html" />
+    <Content Include="FrontEnd\app\modules\auth\views\signup.html" />
+    <Content Include="FrontEnd\app\modules\auth\views\tokens.html" />
+    <Content Include="FrontEnd\app\modules\yo\views\yo.html" />
     <Content Include="FrontEnd\app\robots.txt" />
+    <Content Include="FrontEnd\app\scripts\authComplete.js" />
     <Content Include="FrontEnd\app\styles\main.css" />
+    <Content Include="FrontEnd\app\styles\site.css" />
     <Content Include="FrontEnd\gulpfile.js" />
     <Content Include="FrontEnd\test\bower_components\chai\chai.js" />
     <Content Include="FrontEnd\test\bower_components\chai\karma.conf.js" />
@@ -442,18 +544,32 @@
     <Content Include="FrontEnd\test\bower_components\mocha\mocha.js" />
     <Content Include="FrontEnd\test\index.html" />
     <Content Include="FrontEnd\test\spec\test.js" />
-    <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
+    <Compile Include="ChallengeResults.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="AuthContext.cs" />
+    <Compile Include="AuthRepository.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\RefreshTokenController.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\ExternalLogins.cs" />
+    <Compile Include="Models\RefreshToken.cs" />
+    <Compile Include="MySqlHistoryContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\FacebookAuthProvider.cs" />
+    <Compile Include="Providers\GoogleAuthProvider.cs" />
+    <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="Providers\SimpleRefreshTokenProvider.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Models\UserModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="FrontEnd\app\.htaccess" />
@@ -577,17 +693,82 @@
     <Content Include="FrontEnd\app\bower_components\intro.js\Makefile" />
     <Content Include="FrontEnd\app\bower_components\intro.js\package.json" />
     <Content Include="FrontEnd\app\bower_components\intro.js\README.md" />
-    <Content Include="packages.config" />
-    <Content Include="appsettings.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\.bower.json" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\bower.json" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\CHANGELOG.md" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\LICENSE" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\package.json" />
+    <Content Include="FrontEnd\app\bower_components\angular-loading-bar\README.md" />
+    <Content Include="FrontEnd\app\bower_components\angular-local-storage\.bower.json" />
+    <Content Include="FrontEnd\app\bower_components\angular-local-storage\bower.json" />
+    <Content Include="FrontEnd\app\bower_components\angular-local-storage\LICENSE" />
+    <Content Include="FrontEnd\app\bower_components\angular-local-storage\package.json" />
+    <Content Include="FrontEnd\app\bower_components\angular-local-storage\README.md" />
+    <Content Include="FrontEnd\app\bower_components\bootstrap-social\.bower.json" />
+    <Content Include="FrontEnd\app\bower_components\bootstrap-social\.editorconfig" />
+    <Content Include="FrontEnd\app\bower_components\bootstrap-social\bootstrap-social.less" />
+    <Content Include="FrontEnd\app\bower_components\bootstrap-social\bootstrap-social.scss" />
+    <Content Include="FrontEnd\app\bower_components\bootstrap-social\bower.json" />
+    <Content Include="FrontEnd\app\bower_components\bootstrap-social\README.md" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\.bower.json" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\bower.json" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\component.json" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\composer.json" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\bordered-pulled.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\core.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\fixed-width.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\font-awesome.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\icons.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\larger.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\list.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\mixins.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\path.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\rotated-flipped.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\spinning.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\stacked.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\less\variables.less" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\Makefile" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\README.md" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\font-awesome.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_core.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_fixed-width.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_icons.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_larger.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_list.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_mixins.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_path.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_spinning.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_stacked.scss" />
+    <Content Include="FrontEnd\app\bower_components\components-font-awesome\scss\_variables.scss" />
+    <Content Include="FrontEnd\app\bower_components\angular-route\.bower.json" />
+    <Content Include="FrontEnd\app\bower_components\angular-route\angular-route.min.js.map" />
+    <Content Include="FrontEnd\app\bower_components\angular-route\bower.json" />
+    <Content Include="FrontEnd\app\bower_components\angular-route\README.md" />
     <None Include="Properties\PublishProfiles\Dropbox.pubxml" />
     <None Include="Properties\PublishProfiles\yonet.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FrontEnd\app\images\" />
-    <Folder Include="FrontEnd\app\modules\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="FrontEnd\app\modules\yo\yo.ts" />
     <TypeScriptCompile Include="FrontEnd\app\scripts\app.ts" />
+    <TypeScriptCompile Include="FrontEnd\app\scripts\templates.ts" />
     <TypeScriptCompile Include="FrontEnd\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="FrontEnd\typings\es6-promises\es6-promises.d.ts" />
     <TypeScriptCompile Include="FrontEnd\typings\jquery\jquery.d.ts" />
@@ -608,6 +789,13 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -651,6 +839,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <Import Project="..\..\packages\AutoMapper.3.3.0-ci1017\tools\AutoMapper.targets" Condition="Exists('..\..\packages\AutoMapper.3.3.0-ci1017\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -8,7 +8,7 @@ using Yo.Contracts;
 namespace Yo.Services {
 
 
-    [RoutePrefix("_/yo")]
+    [RoutePrefix("yo")]
     public class YoController : ControllerBase {
 
         [Route("")]
