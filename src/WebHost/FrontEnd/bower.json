@@ -11,13 +11,12 @@
     "angular": "~1.2.22",
     "angular-sanitize": "~1.2.22",
     "intro.js": "~0.9.0",
-    "angular-local-storage": "~0.0.7",
     "angular-loading-bar": "~0.5.0",
     "components-font-awesome": "~4.1.0",
     "bootstrap-social": "~4.6.0",
-    "angular-route": "~1.2.22"
+    "angular-route": "~1.2.22",
+    "ngstorage": "~0.3.0",
+    "angular-ui-router": "~0.2.10"
   },
-  "devDependencies": {},
-  "resolutions": {
-  }
+  "devDependencies": {}
 }

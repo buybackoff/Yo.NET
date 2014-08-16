@@ -1,13 +1,13 @@
 ﻿'use strict';
 angular.module('authModule').factory('authInterceptorService', [
-    '$q', '$injector', '$location', 'localStorageService',
-    function ($q, $injector, $location, localStorageService) {
+    '$q', '$injector', '$location', '$localStorage',
+    function ($q, $injector, $location, $localStorage) {
         var authInterceptorServiceFactory = { request: null, responseError: null };
 
         var request = function (config) {
             config.headers = config.headers || {};
 
-            var authData = localStorageService.get('authorizationData');
+            var authData = $localStorage.authorizationData;
             if (authData) {
                 config.headers.Authorization = 'Bearer ' + authData.token;
             }
@@ -18,15 +18,8 @@ angular.module('authModule').factory('authInterceptorService', [
         var responseError = function (rejection) {
             if (rejection.status === 401) {
                 var authService = $injector.get('authService');
-                var authData = localStorageService.get('authorizationData');
+                var authData = $localStorage.authorizationData;
 
-                // TODO should not have any explicit refresh path, it is at api level only
-                if (authData) {
-                    if (authData.useRefreshTokens) {
-                        $location.path('/refresh');
-                        return $q.reject(rejection);
-                    }
-                }
                 authService.logOut();
                 $location.path('/login');
             }

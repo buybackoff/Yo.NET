@@ -16,12 +16,6 @@ angular.module('authModule')
             $scope.savedSuccessfully = false;
             $scope.message = "";
 
-            $scope.registerData = {
-                userName: authService.externalAuthData.userName,
-                provider: authService.externalAuthData.provider,
-                externalAccessToken: authService.externalAuthData.externalAccessToken
-            };
-
             $scope.registerExternal = () => {
 
                 authService.registerExternal($scope.registerData)

@@ -5,12 +5,6 @@ angular.module('authModule').controller('associateController', [
         $scope.savedSuccessfully = false;
         $scope.message = "";
 
-        $scope.registerData = {
-            userName: authService.externalAuthData.userName,
-            provider: authService.externalAuthData.provider,
-            externalAccessToken: authService.externalAuthData.externalAccessToken
-        };
-
         $scope.registerExternal = function () {
             authService.registerExternal($scope.registerData).then(function (response) {
                 $scope.savedSuccessfully = true;

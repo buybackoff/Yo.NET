@@ -1,19 +1,12 @@
 ﻿'use strict';
 angular.module('authModule').factory('authService', [
-    '$http', '$q', 'localStorageService', 'ngAuthSettings',
-    function ($http, $q, localStorageService, ngAuthSettings) {
+    '$http', '$q', '$localStorage', 'ngAuthSettings',
+    function ($http, $q, $localStorage, ngAuthSettings) {
         var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
         var authentication = {
             isAuth: false,
-            userName: "",
-            useRefreshTokens: false
-        };
-
-        var externalAuthData = {
-            provider: "",
-            userName: "",
-            externalAccessToken: ""
+            userName: ""
         };
 
         // TODO server type UserRegisterModel
@@ -37,23 +30,22 @@ angular.module('authModule').factory('authService', [
 
             $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
                 if (loginData.useRefreshTokens) {
-                    localStorageService.set('authorizationData', {
+                    $localStorage.authorizationData = {
                         token: response.access_token,
                         userName: loginData.userName,
                         refreshToken: response.refresh_token,
                         useRefreshTokens: true
-                    });
+                    };
                 } else {
-                    localStorageService.set('authorizationData', {
+                    $localStorage.authorizationData = {
                         token: response.access_token,
                         userName: loginData.userName,
                         refreshToken: "",
                         useRefreshTokens: false
-                    });
+                    };
                 }
                 authentication.isAuth = true;
                 authentication.userName = loginData.userName;
-                authentication.useRefreshTokens = loginData.useRefreshTokens;
 
                 deferred.resolve(response);
             }).error(function (err, status) {
@@ -65,40 +57,38 @@ angular.module('authModule').factory('authService', [
         };
 
         var logOut = function () {
-            localStorageService.remove('authorizationData');
+            delete $localStorage.authorizationData;
 
             authentication.isAuth = false;
             authentication.userName = "";
-            authentication.useRefreshTokens = false;
         };
 
         var fillAuthData = function () {
-            var authData = localStorageService.get('authorizationData');
+            var authData = $localStorage.authorizationData;
             if (authData) {
                 authentication.isAuth = true;
                 authentication.userName = authData.userName;
-                authentication.useRefreshTokens = authData.useRefreshTokens;
             }
         };
 
         var refreshToken = function () {
             var deferred = $q.defer();
 
-            var authData = localStorageService.get('authorizationData');
+            var authData = $localStorage.authorizationData;
 
             if (authData) {
                 if (authData.useRefreshTokens) {
                     var data = "grant_type=refresh_token&refresh_token=" + authData.refreshToken + "&client_id=" + ngAuthSettings.clientId;
 
-                    localStorageService.remove('authorizationData');
+                    delete $localStorage.authorizationData;
 
                     $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
-                        localStorageService.set('authorizationData', {
+                        $localStorage.authorizationData = {
                             token: response.access_token,
                             userName: response.userName,
                             refreshToken: response.refresh_token,
                             useRefreshTokens: true
-                        });
+                        };
 
                         deferred.resolve(response);
                     }).error(function (err, status) {
@@ -120,16 +110,15 @@ angular.module('authModule').factory('authService', [
                     externalAccessToken: externalData.externalAccessToken
                 }
             }).success(function (response) {
-                localStorageService.set('authorizationData', {
+                $localStorage.authorizationData = {
                     token: response.access_token,
                     userName: response.userName,
                     refreshToken: "",
                     useRefreshTokens: false
-                });
+                };
 
                 authentication.isAuth = true;
                 authentication.userName = response.userName;
-                authentication.useRefreshTokens = false;
 
                 deferred.resolve(response);
             }).error(function (err, status) {
@@ -144,16 +133,15 @@ angular.module('authModule').factory('authService', [
             var deferred = $q.defer();
 
             $http.post(serviceBase + 'account/registerexternal', registerExternalData).success(function (response) {
-                localStorageService.set('authorizationData', {
+                $localStorage.authorizationData = {
                     token: response.access_token,
                     userName: response.userName,
                     refreshToken: "",
                     useRefreshTokens: false
-                });
+                };
 
                 authentication.isAuth = true;
                 authentication.userName = response.userName;
-                authentication.useRefreshTokens = false;
 
                 deferred.resolve(response);
             }).error(function (err, status) {
@@ -172,7 +160,6 @@ angular.module('authModule').factory('authService', [
             authentication: authentication,
             refreshToken: refreshToken,
             obtainAccessToken: obtainAccessToken,
-            externalAuthData: externalAuthData,
             registerExternal: registerExternal
         };
 

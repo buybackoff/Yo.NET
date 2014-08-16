@@ -1,7 +1,7 @@
 ﻿'use strict';
 declare var introJs;
 var yoModule: ng.IModule =
-    angular.module('yoModule', []);
+    angular.module('yoModule', ['ngSanitize', 'ui.router']);
 
 interface IYoHub extends HubConnection {
     // YoHub Client functions: 
@@ -21,15 +21,16 @@ interface SignalR {
     yoHub: IYoHub;
 }
 
-authModule
-    .config(($routeProvider) => {
+yoModule
+    .config(['$stateProvider', ($stateProvider) => {
 
-        $routeProvider.when("/yo", {
+        $stateProvider.state("yo", {
+            url: "/yo",
             controller: "yoController",
-            templateUrl: "modules/yo/views/yo.html"
+            templateUrl: "/modules/yo/views/yo.html"
         });
 
-    })
+    }])
     .factory('yoDataService', [
         '$http', ($http: ng.IHttpService) => {
             // that we have access to YoResponse automatically

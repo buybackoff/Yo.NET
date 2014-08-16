@@ -3,11 +3,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Yo.WebHost.Models;
 
 namespace Yo.WebHost {
-
-    public class ApplicationUser : IdentityUser {
-        public string CustomUserProperty { get; set; }
-    }
-
     [DbConfigurationType(typeof(MySqlConfiguration))]
     public class AuthContext : IdentityDbContext<ApplicationUser> {
         public AuthContext()

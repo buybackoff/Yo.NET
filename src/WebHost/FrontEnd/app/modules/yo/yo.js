@@ -1,13 +1,15 @@
 ﻿'use strict';
-var yoModule = angular.module('yoModule', []);
+var yoModule = angular.module('yoModule', ['ngSanitize', 'ui.router']);
 
 
-authModule.config(function ($routeProvider) {
-    $routeProvider.when("/yo", {
-        controller: "yoController",
-        templateUrl: "modules/yo/views/yo.html"
-    });
-}).factory('yoDataService', [
+yoModule.config([
+    '$stateProvider', function ($stateProvider) {
+        $stateProvider.state("yo", {
+            url: "/yo",
+            controller: "yoController",
+            templateUrl: "/modules/yo/views/yo.html"
+        });
+    }]).factory('yoDataService', [
     '$http', function ($http) {
         // that we have access to YoResponse automatically
         // after running 'gulp servertypes'

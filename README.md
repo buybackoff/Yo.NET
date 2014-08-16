@@ -39,3 +39,11 @@ Then run `yo gitignore` (in the repo folder) and select files for yeoman and you
 * Set up gulp for TypeScript compilation if IDE doesn't do that for you.
 * Commit the stub.
 * TODO documentation, description...
+
+
+
+Identity
+-----------------
+Use built-in SPA template with the following modifications:
+* Rename ApplicationDbContext to IdentityDbContext
+* Use MySQL as DB with MySQL.Data.Entity

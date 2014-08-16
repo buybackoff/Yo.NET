@@ -4,20 +4,11 @@
 interface IAuthData {
     isAuth: boolean;
     userName: string;
-    useRefreshTokens: boolean;
-}
-
-interface IExternalAuthData {
-    provider: string;
-    userName: string;
-    externalAccessToken: string;
 }
 
 interface IStoredAuthData {
     token: string;
     userName: string;
-    refreshToken: string;
-    useRefreshTokens: boolean;
 }
 
 interface IAuthService {
@@ -28,28 +19,21 @@ interface IAuthService {
     authentication: any;
     refreshToken: any;
     obtainAccessToken: any;
-    externalAuthData: any;
     registerExternal: any;
 }
 
 angular.module('authModule')
-    .factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings',
-        ($http, $q, localStorageService, ngAuthSettings) => {
+    .factory('authService', ['$http', '$q', '$localStorage', 'ngAuthSettings',
+        ($http, $q, $localStorage, ngAuthSettings) => {
 
             var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
 
             var authentication: IAuthData = {
                 isAuth: false,
-                userName: "",
-                useRefreshTokens: false
+                userName: ""
             };
 
-            var externalAuthData: IExternalAuthData = {
-                provider: "",
-                userName: "",
-                externalAccessToken: ""
-            };
 
             // TODO server type UserRegisterModel
             var saveRegistration = registration => {
@@ -78,25 +62,24 @@ angular.module('authModule')
                     .success(response => {
 
                         if (loginData.useRefreshTokens) {
-                            localStorageService.set('authorizationData',
+                            $localStorage.authorizationData = 
                                 <IStoredAuthData> {
                                     token: response.access_token,
                                     userName: loginData.userName,
                                     refreshToken: response.refresh_token,
                                     useRefreshTokens: true
-                                });
+                                };
                         } else {
-                            localStorageService.set('authorizationData',
+                            $localStorage.authorizationData =
                                 <IStoredAuthData> {
                                     token: response.access_token,
                                     userName: loginData.userName,
                                     refreshToken: "",
                                     useRefreshTokens: false
-                                });
+                                };
                         }
                         authentication.isAuth = true;
                         authentication.userName = loginData.userName;
-                        authentication.useRefreshTokens = loginData.useRefreshTokens;
 
                         deferred.resolve(response);
 
@@ -111,21 +94,19 @@ angular.module('authModule')
 
             var logOut = () => {
 
-                localStorageService.remove('authorizationData');
+                delete $localStorage.authorizationData;
 
                 authentication.isAuth = false;
                 authentication.userName = "";
-                authentication.useRefreshTokens = false;
 
             };
 
             var fillAuthData = () => {
 
-                var authData : IStoredAuthData = localStorageService.get('authorizationData');
+                var authData: IStoredAuthData = $localStorage.authorizationData;
                 if (authData) {
                     authentication.isAuth = true;
                     authentication.userName = authData.userName;
-                    authentication.useRefreshTokens = authData.useRefreshTokens;
                 }
 
             };
@@ -133,7 +114,7 @@ angular.module('authModule')
             var refreshToken = () => {
                 var deferred = $q.defer();
 
-                var authData = localStorageService.get('authorizationData');
+                var authData = $localStorage.authorizationData;
 
                 if (authData) {
 
@@ -142,20 +123,20 @@ angular.module('authModule')
                         var data = "grant_type=refresh_token&refresh_token="
                             + authData.refreshToken + "&client_id=" + ngAuthSettings.clientId;
 
-                        localStorageService.remove('authorizationData');
+                        delete $localStorage.authorizationData;
 
                         $http
                             .post(serviceBase + 'token', data,
                             { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                             .success(response => {
 
-                                localStorageService.set('authorizationData',
+                                $localStorage.authorizationData =
                                     <IStoredAuthData>{
                                         token: response.access_token,
                                         userName: response.userName,
                                         refreshToken: response.refresh_token,
                                         useRefreshTokens: true
-                                    });
+                                    };
 
                                 deferred.resolve(response);
 
@@ -181,17 +162,16 @@ angular.module('authModule')
                         }
                     })
                     .success(response => {
-                        localStorageService.set('authorizationData',
+                        $localStorage.authorizationData =
                             <IStoredAuthData> {
                                 token: response.access_token,
                                 userName: response.userName,
                                 refreshToken: "",
                                 useRefreshTokens: false
-                            });
+                            };
 
                         authentication.isAuth = true;
                         authentication.userName = response.userName;
-                        authentication.useRefreshTokens = false;
 
                         deferred.resolve(response);
 
@@ -211,17 +191,16 @@ angular.module('authModule')
                 $http.post(serviceBase + 'account/registerexternal', registerExternalData)
                     .success(response => {
 
-                        localStorageService.set('authorizationData',
+                        $localStorage.authorizationData = 
                             <IStoredAuthData> {
                                 token: response.access_token,
                                 userName: response.userName,
                                 refreshToken: "",
                                 useRefreshTokens: false
-                            });
+                            };
 
                         authentication.isAuth = true;
                         authentication.userName = response.userName;
-                        authentication.useRefreshTokens = false;
 
                         deferred.resolve(response);
 
@@ -242,7 +221,6 @@ angular.module('authModule')
                 authentication: authentication,
                 refreshToken: refreshToken,
                 obtainAccessToken: obtainAccessToken,
-                externalAuthData: externalAuthData,
                 registerExternal: registerExternal,
             }
 
