@@ -38,16 +38,10 @@ namespace WebHost.Models {
         public bool RememberBrowser { get; set; }
     }
 
-    public class ForgotViewModel {
-        [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-    }
 
     public class LoginViewModel {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Username or email")]
         public string EmailOrUserName { get; set; }
 
         [Required]
@@ -72,14 +66,12 @@ namespace WebHost.Models {
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
-        [Display(Name = "Full Name")]
+        [Display(Name = "Full name")]
         public string FullName { get; set; }
 
-        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
-        [Display(Name = "User Name")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
     }
 
@@ -123,5 +115,12 @@ namespace WebHost.Models {
         public string Code { get; set; }
     }
 
+
+    public class ForgotPasswordViewModel {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+    }
     
 }

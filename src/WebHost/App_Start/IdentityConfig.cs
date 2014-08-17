@@ -48,7 +48,7 @@ namespace WebHost {
                 RequireLowercase = true,
                 RequireUppercase = true,
             };
-
+            
             // Configure user lockout defaults
             manager.UserLockoutEnabledByDefault = true;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
@@ -62,6 +62,7 @@ namespace WebHost {
                 Subject = "SecurityCode",
                 BodyFormat = "Your security code is {0}"
             });
+            
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();
 
@@ -125,7 +126,11 @@ namespace WebHost {
 
             var user = userManager.FindByName(name);
             if (user == null) {
-                user = new ApplicationUser { UserName = name, Email = name };
+                user = new ApplicationUser {
+                    UserName = "admin",
+                    Email = name,
+                    FullName = "Cool Admin"
+                };
                 userManager.Create(user, password);
                 userManager.SetLockoutEnabled(user.Id, false);
             }
@@ -148,6 +153,61 @@ namespace WebHost {
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context) {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+
+        /// <summary>
+        /// Sign in the user in using the user name and password
+        /// </summary>
+        /// <param name="emailOrUserName"></param>
+        /// <param name="password"></param>
+        /// <param name="isPersistent"></param>
+        /// <param name="shouldLockout"></param>
+        /// <returns></returns>
+        public override async Task<SignInStatus> PasswordSignInAsync(string emailOrUserName, string password, bool isPersistent, bool shouldLockout) {
+            if (UserManager == null) {
+                return SignInStatus.Failure;
+            }
+            ApplicationUser user = null;
+            var couldBeEmail = emailOrUserName.Contains("@");
+            if (couldBeEmail) {
+                user = await UserManager.FindByEmailAsync(emailOrUserName);
+            }
+            if (user == null) {
+                user = await UserManager.FindByNameAsync(emailOrUserName);
+            }
+
+            if (user == null) {
+                return SignInStatus.Failure;
+            }
+
+            if (await UserManager.IsLockedOutAsync(user.Id)) {
+                return SignInStatus.LockedOut;
+            }
+            if (await UserManager.CheckPasswordAsync(user, password)) {
+                return await SignInOrTwoFactor(user, isPersistent);
+            }
+            if (shouldLockout) {
+                // If lockout is requested, increment access failed count which might lock out the user
+                await UserManager.AccessFailedAsync(user.Id);
+                if (await UserManager.IsLockedOutAsync(user.Id)) {
+                    return SignInStatus.LockedOut;
+                }
+            }
+            return SignInStatus.Failure;
+        }
+
+        private async Task<SignInStatus> SignInOrTwoFactor(ApplicationUser user, bool isPersistent) {
+            var id = Convert.ToString(user.Id);
+            if (await UserManager.GetTwoFactorEnabledAsync(user.Id)
+                && (await UserManager.GetValidTwoFactorProvidersAsync(user.Id)).Count > 0
+                && !await AuthenticationManager.TwoFactorBrowserRememberedAsync(id)) {
+                var identity = new ClaimsIdentity(DefaultAuthenticationTypes.TwoFactorCookie);
+                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, id));
+                AuthenticationManager.SignIn(identity);
+                return SignInStatus.RequiresVerification;
+            }
+            await SignInAsync(user, isPersistent, false);
+            return SignInStatus.Success;
         }
     }
 }

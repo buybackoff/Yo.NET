@@ -14,8 +14,8 @@ namespace WebHost {
         static Startup() {
             PublicClientId = "web";
             OAuthOptions = new OAuthAuthorizationServerOptions {
-                TokenEndpointPath = new PathString("/Account/Token"),
-                AuthorizeEndpointPath = new PathString("/Account/Authorize"),
+                TokenEndpointPath = new PathString("/account/token"),
+                AuthorizeEndpointPath = new PathString("/account/authorize"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(30),
                 AllowInsecureHttp = true
@@ -37,7 +37,7 @@ namespace WebHost {
             app.UseCookieAuthentication(new CookieAuthenticationOptions {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 CookieHttpOnly = true,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/account/login"),
                 Provider = new CookieAuthenticationProvider {
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(20),
