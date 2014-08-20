@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Web.Configuration;
+using System.Web.Cors;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
@@ -113,6 +115,8 @@ namespace WebHost {
             };
             app.UseYahooAuthentication(yahooOptions);
 
+
+            
         }
     }
 }

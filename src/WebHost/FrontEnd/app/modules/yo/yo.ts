@@ -25,7 +25,7 @@ yoModule
     .config(['$stateProvider', ($stateProvider) => {
 
         $stateProvider.state("yo", {
-            url: "/",
+            url: "/yo",
             controller: "yoController",
             templateUrl: "/modules/yo/views/yo.html"
         });

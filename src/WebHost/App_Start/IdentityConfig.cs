@@ -129,7 +129,7 @@ namespace WebHost {
                 user = new ApplicationUser {
                     UserName = "admin",
                     Email = name,
-                    FullName = "Cool Admin"
+                    FullName = "Admin"
                 };
                 userManager.Create(user, password);
                 userManager.SetLockoutEnabled(user.Id, false);
