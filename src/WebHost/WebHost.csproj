@@ -904,17 +904,23 @@
       CustomCollectFiles;
       $(CopyAllFilesToSingleFolderForPackageDependsOn);
     </CopyAllFilesToSingleFolderForPackageDependsOn>
-
     <CopyAllFilesToSingleFolderForMsdeployDependsOn>
       CustomCollectFiles;
       $(CopyAllFilesToSingleFolderForPackageDependsOn);
     </CopyAllFilesToSingleFolderForMsdeployDependsOn>
   </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
   <Target Name="CustomCollectFiles">
     <ItemGroup>
       <_CustomFiles Include="FrontEnd\dist\**\*" />
-
-      <FilesForPackagingFromProject  Include="%(_CustomFiles.Identity)">
+      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
         <DestinationRelativePath>FrontEnd\dist\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
       </FilesForPackagingFromProject>
     </ItemGroup>
