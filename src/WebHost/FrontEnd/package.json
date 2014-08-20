@@ -24,7 +24,7 @@
     "gulp-load-plugins": "^0.5.0",
     "gulp-size": "^0.3.0",
     "gulp-uglify": "^0.2.1",
-    "gulp-useref": "^0.4.2",
+    "gulp-useref": "~0.6.0",
     "jshint-stylish": "^0.2.0",
     "opn": "^0.1.1",
     "wiredep": "^1.4.3",
@@ -33,7 +33,10 @@
     "gulp-minify-html": "~0.1.4",
     "gulp-rename": "~1.2.0",
     "gulp-concat": "~2.3.4",
-    "gulp-ngmin": "~0.3.0"
+    "gulp-ngmin": "~0.3.0",
+    "gulp-inject": "~1.0.1",
+    "gulp-add-src": "~0.1.1",
+    "gulp-ng-annotate": "~0.3.0"
   },
   "engines": {
     "node": ">=0.10.0"

@@ -2,9 +2,15 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
+using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
+using Microsoft.Owin.Security.Twitter;
 using Owin;
+using Owin.Security.Providers.LinkedIn;
+using Owin.Security.Providers.Yahoo;
 using WebHost.Models;
 using WebHost.Providers;
 
@@ -36,6 +42,8 @@ namespace WebHost {
             // Enable the application to use a cookie to store information for the signed in user
             app.UseCookieAuthentication(new CookieAuthenticationOptions {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                ExpireTimeSpan = TimeSpan.FromDays(7),
+                SlidingExpiration = true,
                 CookieHttpOnly = true,
                 LoginPath = new PathString("/account/login"),
                 Provider = new CookieAuthenticationProvider {
@@ -62,20 +70,47 @@ namespace WebHost {
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",
             //    clientSecret: "");
+            var twitterOptions = new TwitterAuthenticationOptions {
+                ConsumerKey = "jtN9dYYy2r4UqKBSo3trTLUqL",
+                ConsumerSecret = "9octzU33bA6y5TefZEIg6z5fp9CreVrdgS5tT3E60qpQ399EjM",
+                CallbackPath = new PathString("/account/signin-twitter")
+            };
+            app.UseTwitterAuthentication(twitterOptions);
+                
 
-            //app.UseTwitterAuthentication(
-            //    consumerKey: "",
-            //    consumerSecret: "");
+            var fbOptions = new FacebookAuthenticationOptions {
+                AppId = "924546580895867",
+                AppSecret = "e1b0ce0f6260262e5776b15432aa5ae1",
+                CallbackPath = new PathString("/account/signin-facebook"),
+            };
+            fbOptions.Scope.Add("email public_profile");
+            app.UseFacebookAuthentication(fbOptions);
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            var gOptions = new GoogleOAuth2AuthenticationOptions {
+                ClientId = "1013789043506-8jtds0h8umno3sa11qdfkv66ej4qofpt.apps.googleusercontent.com",
+                ClientSecret = "xA3GRBSaTMQKR6D7vrgniL_W",
+                CallbackPath = new PathString("/account/signin-google")
+            };
+            gOptions.Scope.Add("email");
+            app.UseGoogleAuthentication(gOptions);
+
+
+            var linkedInOptions = new LinkedInAuthenticationOptions {
+                ClientId = "775ktbbtdoo9c3",
+                ClientSecret = "BuZGr6h4ZQtQrKCD",
+                CallbackPath = new PathString("/account/signin-linkedin")
+            };
+            // linkedInOptions.Scope.Add("email"); // they have r_email by default
+            app.UseLinkedInAuthentication(linkedInOptions);
+
+            var yahooOptions = new YahooAuthenticationOptions {
+                ConsumerKey = "dj0yJmk9MFRiaXpSbVVkOWt1JmQ9WVdrOVFVcDRZV1JHTkdrbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1mYQ--",
+                ConsumerSecret = "6c2f0aa4e2457c633f0729ecbbfb6d76b89811d4",
+                CallbackPath = new PathString("/account/signin-yahoo")
+            };
+            app.UseYahooAuthentication(yahooOptions);
+
         }
     }
 }

@@ -11,24 +11,38 @@ var minifyHTML = require('gulp-minify-html');
 // load plugins
 var $ = require('gulp-load-plugins')();
 
+// inject js
+gulp.task('injs', function () {
+    var target = gulp.src('app/index.html');
+    var sources = gulp.src(['app/modules/**/*.js'], { read: false });
+
+    return target.pipe($.inject(sources, { relative: true }))
+      .pipe(gulp.dest('app'));
+});
+
 gulp.task('templates', function () {
+    var addsrc = require('gulp-add-src');
+
     gulp.src('app/modules/**/*.html')
       .pipe(minifyHTML({
           quotes: true
       }))
-      .pipe(templates('templates.js', {
+      .pipe(templates('generated_templates.js', {
           root: '/modules'
       }))
-      .pipe(rename('generated_templates.js'))
-      .pipe(gulp.dest('.tmp/scripts'));
+      .pipe(addsrc('app/scripts/templates.js'))
+      .pipe($.concat('templates.js'))
+      .pipe($.uglify())
+      .pipe(gulp.dest('dist/scripts'));
+
+    //.pipe(rename('generated_templates.js'))
+    //.pipe(gulp.dest('.tmp/scripts'));
 
     //gulp.src([
     //    'app/scripts/templates.js',
     //        '.tmp/scripts/generated_templates.js'
     //])
-    //    .pipe($.concat('templates.js'))
-    //    .pipe($.uglify())
-    //    .pipe(gulp.dest('.tmp/scripts'));;
+
 });
 
 
@@ -63,20 +77,22 @@ gulp.task('servertypes', function () {
         }));
 });
 
-gulp.task('html', ['styles', 'scripts', 'jsx', 'templates'], function () {
+gulp.task('html', ['injs', 'styles', 'scripts', 'templates'], function () {
     var jsFilter = $.filter('**/*.js');
     var cssFilter = $.filter('**/*.css');
-
+    var ngAnnotate = require('gulp-ng-annotate');
+    var assets = $.useref.assets({ searchPath: '{.tmp,app}' });
     return gulp.src('app/*.html')
-        .pipe($.useref.assets({ searchPath: '{.tmp,app}' }))
+        .pipe(assets)
         .pipe(jsFilter)
-        .pipe($.ngmin({ dynamic: false }))
+        .pipe(ngAnnotate())
+        //.pipe($.ngmin({ dynamic: false }))
         .pipe($.uglify())
         .pipe(jsFilter.restore())
         .pipe(cssFilter)
         .pipe($.csso())
         .pipe(cssFilter.restore())
-        .pipe($.useref.restore())
+        .pipe(assets.restore())
         .pipe($.useref())
         .pipe(gulp.dest('dist'))
         .pipe($.size());
@@ -94,13 +110,11 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-    // TODO not included in main, bowerFiles ignores them
     gulp.src('app/bower_components/components-font-awesome/**/*.{eot,svg,ttf,woff,otf}')
         .pipe($.flatten())
         .pipe(gulp.dest('dist/fonts'))
         .pipe($.size());
-    return $.bowerFiles()
-        .pipe($.filter('/**/*.{eot,svg,ttf,woff}'))
+    gulp.src('app/bower_components/bootstrap/**/*.{eot,svg,ttf,woff,otf}')
         .pipe($.flatten())
         .pipe(gulp.dest('dist/fonts'))
         .pipe($.size());

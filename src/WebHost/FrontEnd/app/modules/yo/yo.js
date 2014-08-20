@@ -5,7 +5,7 @@ var yoModule = angular.module('yoModule', ['ngSanitize', 'ui.router']);
 yoModule.config([
     '$stateProvider', function ($stateProvider) {
         $stateProvider.state("yo", {
-            url: "/yo",
+            url: "/",
             controller: "yoController",
             templateUrl: "/modules/yo/views/yo.html"
         });

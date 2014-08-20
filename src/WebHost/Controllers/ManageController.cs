@@ -296,6 +296,7 @@ namespace WebHost.Controllers
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user == null)
             {
+                ViewBag.ErrorDescription = "ManageLogins: user == null";
                 return View("Error");
             }
             var userLogins = await UserManager.GetLoginsAsync(User.Identity.GetUserId());

@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using WebHost.Models;
 
 namespace WebHost.Controllers {
     [Authorize]
@@ -26,19 +28,15 @@ namespace WebHost.Controllers {
             }
         }
 
-        public class NamesViewModel {
-            public string Email { get; set; }
-            public string FullName { get; set; }
-            public string UserName { get; set; }
-        }
-
         [Route("names")]
+        [AllowAnonymous]
         public async Task<NamesViewModel> GetUserNames() {
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            if (!User.Identity.IsAuthenticated) { return null; }
+            var ci = (ClaimsIdentity) User.Identity;
             return new NamesViewModel {
-                Email = user.Email,
-                UserName = user.UserName,
-                FullName = user.FullName,
+                Email = ci.FindFirstValue(ClaimNames.Email),
+                UserName = ci.FindFirstValue(ClaimNames.Username),
+                FullName = ci.FindFirstValue(ClaimNames.FullName)
             };
         }
 

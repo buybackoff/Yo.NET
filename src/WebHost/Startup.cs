@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Owin;
@@ -13,6 +14,8 @@ namespace WebHost {
             ConfigureAuth(app);
 
             app.MapSignalR();
+            GlobalHost.HubPipeline.RequireAuthentication();
+
             app.Map("/api", appApi => {
                 var config = new HttpConfiguration();
                 WebApiConfig.Register(config);

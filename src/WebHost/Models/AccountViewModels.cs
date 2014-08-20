@@ -10,8 +10,13 @@ namespace WebHost.Models {
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Display(Name = "Full Name")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [Display(Name = "Full name")]
         public string FullName { get; set; }
+
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
     }
 
     public class ExternalLoginListViewModel {
@@ -121,6 +126,12 @@ namespace WebHost.Models {
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class NamesViewModel {
+        public string Email { get; set; }
+        public string FullName { get; set; }
+        public string UserName { get; set; }
     }
     
 }

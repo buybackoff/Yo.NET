@@ -17,9 +17,8 @@
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/site.css">
     <!-- endbuild -->
-    <!-- build:js scripts/vendor/modernizr.js -->
+    <!-- build:js scripts/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
 </head>
@@ -28,27 +27,24 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div class="container">
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-controller="indexController">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
                         <span class="glyphicon glyphicon-chevron-down"></span>
                     </button>
-                    <a class="navbar-brand" href="#/">Home</a>
+                    <a class="navbar-brand" href="#/">Yo.NET</a>
+                    
                 </div>
                 <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
-                        <li data-ng-hide="!authentication.isAuth"><a href="#/yo">Yo</a></li>
-                        <li data-ng-hide="!authentication.isAuth"><a href="#/refresh">Refresh Token</a></li>
-                        <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
-                        <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
-                        <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li data-ng-show="isAuth()" class="ng-hide"><a href="#/yo">Yo</a></></li>
                     </ul>
+                    <auth-header></auth-header>
                 </div>
             </div>
         </div>
-        
+
         <div class="container">
             <div data-ng-view="" ui-view>
             </div>
@@ -85,7 +81,6 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/react/react.js"></script>
     <script src="bower_components/es6-promise/promise.js"></script>
     <script src="bower_components/signalr/jquery.signalR.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -115,27 +110,16 @@
 
     <!-- build:js scripts/templates.js -->
     <script src="scripts/templates.js"></script>
-    <script src="scripts/generated_templates.js"></script>
     <!-- endbuild -->
-
     <!-- build:js scripts/app.js -->
-    
-    <!-- Load Auth -->
+    <!-- inject:js -->
     <script src="modules/auth/auth.js"></script>
-    <!-- Load Auth services -->
+    <script src="modules/yo/yo.js"></script>
+    <script src="modules/auth/controllers/authController.js"></script>
+    <script src="modules/auth/directives/authHeader.js"></script>
     <script src="modules/auth/services/authInterceptorService.js"></script>
     <script src="modules/auth/services/authService.js"></script>
-    <script src="modules/auth/services/tokensManagerService.js"></script>
-    <!-- Load Auth controllers -->
-    <script src="modules/auth/controllers/indexController.js"></script>
-    <script src="modules/auth/controllers/homeController.js"></script>
-    <script src="modules/auth/controllers/loginController.js"></script>
-    <script src="modules/auth/controllers/signupController.js"></script>
-    <script src="modules/auth/controllers/refreshController.js"></script>
-    <script src="modules/auth/controllers/tokensManagerController.js"></script>
-    <script src="modules/auth/controllers/associateController.js"></script>
-    <!-- Load Yo -->
-    <script src="modules/yo/yo.js"></script>
+    <!-- endinject -->
     <script src="scripts/app.js"></script>
     <!-- endbuild -->
 
