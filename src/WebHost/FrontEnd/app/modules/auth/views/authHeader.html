@@ -1,6 +1,8 @@
-﻿<ul class="nav navbar-nav navbar-right">
-    <li data-ng-show="isAuth()" class="ng-hide"><a href="#">Welcome, {{getAuthNames().fullName}}</a></li>
-    <li data-ng-show="isAuth()"><a href="" data-ng-click="logout(getPathname())">Sign out</a></li>
-    <li data-ng-hide="isAuth()"> <a href="" data-ng-click="login(getPathname())">Sign in</a></li>
-    <li data-ng-hide="isAuth()"> <a href="/account/register">Sign Up</a></li>
-</ul>
+﻿<div>
+    <ul class="nav navbar-nav navbar-right">
+        <li data-ng-show="isAuth()" class="ng-hide"><a href="#">Welcome, {{getAuthNames().fullName}}</a></li>
+        <li data-ng-show="isAuth()"><a href="" data-ng-click="logout(getPathname())">Sign out</a></li>
+        <li data-ng-hide="isAuth()"> <a href="" data-ng-click="login(getPathname())">Sign in</a></li>
+        <li data-ng-hide="isAuth()"> <a href="/account/register">Sign Up</a></li>
+    </ul>
+</div>

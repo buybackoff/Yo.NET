@@ -15,7 +15,7 @@ angular.module('authModule')
             var directive: ng.IDirective =
                 {
                     restrict: 'EAC',
-                    replace: false,
+                    replace: true,
                     transclude: false,
                     scope: {},
                     templateUrl: '/modules/auth/views/authHeader.html',
