@@ -14,7 +14,7 @@
         }
         var directive = {
             restrict: 'EAC',
-            replace: true,
+            replace: false,
             transclude: false,
             scope: {},
             templateUrl: '/modules/auth/views/authHeader.html',

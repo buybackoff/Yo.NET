@@ -33,7 +33,7 @@ gulp.task('templates', function () {
       .pipe(addsrc('app/scripts/templates.js'))
       .pipe($.concat('templates.js'))
       .pipe($.uglify())
-      .pipe(gulp.dest('dist/scripts'));
+      .pipe(gulp.dest('.tmp/scripts'));
 
     //.pipe(rename('generated_templates.js'))
     //.pipe(gulp.dest('.tmp/scripts'));
