@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Configuration;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -71,16 +72,16 @@ namespace WebHost {
             //    clientId: "",
             //    clientSecret: "");
             var twitterOptions = new TwitterAuthenticationOptions {
-                ConsumerKey = "jtN9dYYy2r4UqKBSo3trTLUqL",
-                ConsumerSecret = "9octzU33bA6y5TefZEIg6z5fp9CreVrdgS5tT3E60qpQ399EjM",
+                ConsumerKey = WebConfigurationManager.AppSettings["TwitterId"],
+                ConsumerSecret = WebConfigurationManager.AppSettings["TwitterSecret"],
                 CallbackPath = new PathString("/account/signin-twitter")
             };
             app.UseTwitterAuthentication(twitterOptions);
                 
 
             var fbOptions = new FacebookAuthenticationOptions {
-                AppId = "924546580895867",
-                AppSecret = "e1b0ce0f6260262e5776b15432aa5ae1",
+                AppId = WebConfigurationManager.AppSettings["FacebookId"],
+                AppSecret = WebConfigurationManager.AppSettings["FacebookSecret"],
                 CallbackPath = new PathString("/account/signin-facebook"),
             };
             fbOptions.Scope.Add("email public_profile");
@@ -88,8 +89,8 @@ namespace WebHost {
 
 
             var gOptions = new GoogleOAuth2AuthenticationOptions {
-                ClientId = "1013789043506-8jtds0h8umno3sa11qdfkv66ej4qofpt.apps.googleusercontent.com",
-                ClientSecret = "xA3GRBSaTMQKR6D7vrgniL_W",
+                ClientId = WebConfigurationManager.AppSettings["GoogleId"],
+                ClientSecret = WebConfigurationManager.AppSettings["GoogleSecret"],
                 CallbackPath = new PathString("/account/signin-google")
             };
             gOptions.Scope.Add("email");
@@ -97,17 +98,18 @@ namespace WebHost {
 
 
             var linkedInOptions = new LinkedInAuthenticationOptions {
-                ClientId = "775ktbbtdoo9c3",
-                ClientSecret = "BuZGr6h4ZQtQrKCD",
+                ClientId = WebConfigurationManager.AppSettings["LinkedInId"],
+                ClientSecret = WebConfigurationManager.AppSettings["LinkedInSecret"],
                 CallbackPath = new PathString("/account/signin-linkedin")
             };
             // linkedInOptions.Scope.Add("email"); // they have r_email by default
             app.UseLinkedInAuthentication(linkedInOptions);
 
             var yahooOptions = new YahooAuthenticationOptions {
-                ConsumerKey = "dj0yJmk9MFRiaXpSbVVkOWt1JmQ9WVdrOVFVcDRZV1JHTkdrbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1mYQ--",
-                ConsumerSecret = "6c2f0aa4e2457c633f0729ecbbfb6d76b89811d4",
-                CallbackPath = new PathString("/account/signin-yahoo")
+                ConsumerKey = WebConfigurationManager.AppSettings["YahooId"],
+                ConsumerSecret = WebConfigurationManager.AppSettings["YahooSecret"],
+                CallbackPath = new PathString("/account/signin-yahoo"),
+                
             };
             app.UseYahooAuthentication(yahooOptions);
 

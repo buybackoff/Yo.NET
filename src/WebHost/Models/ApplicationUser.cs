@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -7,10 +8,14 @@ namespace WebHost.Models {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
 
     public static class ClaimNames {
-        public const string Email = "urn:yo:email";
-        public const string EmailConfirmed = "urn:yo:emailconfirmed";
-        public const string FullName = "urn:yo:fullname";
-        public const string Username = "urn:yo:username";
+        private static string id = WebConfigurationManager.AppSettings["ApplicationUrnKey"] ?? "my";
+        static ClaimNames() {
+            
+        }
+        public static string Email = "urn:" + id + ":email";
+        public static string EmailConfirmed = "urn:" + id + ":emailconfirmed";
+        public static string FullName = "urn:" + id + ":fullname";
+        public static string Username = "urn:" + id + ":username";
     }
     
     public class ApplicationUser : IdentityUser {
