@@ -32,11 +32,8 @@ yoModule.config([
         $scope.state.messages.push("Say something and click, yo");
         dataService.data.success(function (data) {
             $scope.state.totalCount = data.allYos;
-            $scope.state.userCount = data.myYos;
-            if (data.myYos == 1) {
-                introJs().start();
-            }
-            $scope.state.messages = data.history;
+            $scope.state.userCount = data.userYos;
+            //$scope.state.messages = data.history;
         });
 
         $scope.click = function () {

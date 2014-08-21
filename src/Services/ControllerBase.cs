@@ -3,6 +3,8 @@ using System.Web.Http;
 using Ractor;
 
 namespace Yo.Services {
+
+    [Authorize]
     public class ControllerBase : ApiController {
 
         public string UserName {

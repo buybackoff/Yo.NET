@@ -6,11 +6,11 @@ using Ractor;
 namespace Yo.Services {
 
     // Some dependency resolutions here
+    [Authorize]
     public abstract class HubBase<T> : Hub<T> where T : class {
         public string UserName {
             get { return Context.User == null ? null : Context.User.Identity.Name; }
         }
-
 
         public MemoryCache Cache { get { return Redis.Cache; } }
         public Redis Redis { get { return Connections.GetRedis(); } }

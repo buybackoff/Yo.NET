@@ -1,16 +1,12 @@
 ﻿declare module server {
 	interface YoRequest {
-		name: string;
 		message: string;
-		withHistory: boolean;
 	}
 	interface YoResponse {
 		allYos: number;
-		myYos: number;
-		history: string[];
+		userYos: number;
 	}
-	interface YoCounterResponse {
-		totalCounter: number;
-		userCounter: number;
+	interface YoHistoryResponse {
+		history: string[];
 	}
 }
