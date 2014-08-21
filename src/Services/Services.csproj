@@ -61,13 +61,13 @@
     <Reference Include="Owin">
       <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Ractor, Version=0.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ractor, Version=0.2.6.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Ractor.0.2.5\lib\net40\Ractor.dll</HintPath>
+      <HintPath>..\..\packages\Ractor.0.2.6\lib\net40\Ractor.dll</HintPath>
     </Reference>
     <Reference Include="Ractor.Persistence, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Ractor.Persistence.0.2.5\lib\net40\Ractor.Persistence.dll</HintPath>
+      <HintPath>..\..\packages\Ractor.Persistence.0.2.6\lib\net40\Ractor.Persistence.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Common, Version=4.0.24.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
